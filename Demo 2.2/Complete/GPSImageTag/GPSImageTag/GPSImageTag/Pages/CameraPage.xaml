@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GPSImageTag.CameraPage"
+             Title="{Binding Title}">
+    <ScrollView>
+        <Grid Padding="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackLayout Spacing="10" Padding="10" Grid.Row="0">
+                <Button x:Name="ButtonTakePhoto" Command="{Binding TakePhotoCommand}" Text="Take Photo" />
+                <Button x:Name="ButtonPickPhoto" Command="{Binding PickPhotoCommand}" Text="Pick Photo" />
+                <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
+                <Image x:Name="image" Source="{Binding Photo,Converter={StaticResource ByteToImageConverter}}" />
+            </StackLayout>
+            <StackLayout Spacing="10" Padding="10" Grid.Row="1">
+                <Entry x:Name="PhotoName" Placeholder="Enter photo name" Text="{Binding ImageName}" />
+                <Entry x:Name="PhotoDesc" Placeholder="Enter photo description" Text="{Binding ImageDesc}"/>
+                <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
+            </StackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>
